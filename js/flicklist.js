@@ -1,7 +1,7 @@
 
 var api = {
-  root: "https://api.themoviedb.org/3",
-  token: "TODO" // TODO 0 put your api key here
+	root: "https://api.themoviedb.org/3",
+  	token: "2c80210ad3239a0fdd40d6ce68fd02e0" // TODO 0 put your api key here
 }
 
 var flicklistView = new Vue({
@@ -29,14 +29,13 @@ var flicklistView = new Vue({
 						console.log(response);
 						// TODO 2
 						// update this.browseItems, setting it equal to the movies we recieved in the response
-
+						this.browseItems = response.results
 
 					});
 		},
-		// TODO 5
-		// make a method to use when a "Add to Watchlist" button is clicked
-		// It should accept a movie as a parameter, and add that item to
-		// the watchlistItems list,
+		addToWatchlist(title) {
+			this.watchlistItems.push(title);
+		}
 	},
 	mounted: function() {
 		// call discoverMovies when things start up
