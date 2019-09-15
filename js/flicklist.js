@@ -12,7 +12,8 @@ var flicklistView = new Vue({
 			// Whenever it changes, Vue will automatically re-render
 			// the html for us.
 			watchlistItems: [],
-      browseItems: [],
+			browseItems: [],
+			queryValue: [],
       // TODO 8B
 		};
 	},
@@ -33,14 +34,18 @@ var flicklistView = new Vue({
 
 					});
     },
-    searchMovies: function(searchTerm) {
+    searchMovies: function(queryValue) {
       // Make an AJAX request to the /search/movie endpoint
       // of the API, using the query string that was passed in.
       //
       // if successful, update this.browseItems appropriately.
-      // This update will automatically trigger a re-render.
-      console.log(`searching for movies with "${searchTerm}" in their title...`);
-
+			// This update will automatically trigger a re-render.
+			console.log(`searching for movies with "${this.queryValue}" in their title...`);
+			fetch(`${api.root}/search/movie?api_key=${api.token}&query=${this.queryValue}`)
+					.then(resp => resp.ok ? resp.json() : Promise.reject(resp))
+					.then((response) => {
+						this.browseItems = response.results
+					});
       // TODO 9
       // implement this function as described in the comment above
       // you can use the body of discoverMovies as a jumping off point

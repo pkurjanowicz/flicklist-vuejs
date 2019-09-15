@@ -50,13 +50,25 @@ ul {
 }
 
 button, input[type="submit"] {
-	border-width: 0px;
-	/*
-	TODO 7
-	give these buttons some padding, and color them orange with white text
-	*/
+	padding: 10px;
+    background: orange;
+    border-width: 0px;
+    color: white;
 }
 
 button:disabled {
 	opacity: 0.5;
+}
+
+.item-watchlist {
+	display: inline-block;
+	margin: 10px 10px 0px 0px;
+	padding: 60px;
+	background: orange;
+	color: white;
+}
+
+
+body {
+    color: gray;
 }
